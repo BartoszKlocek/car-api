@@ -1,7 +1,5 @@
 package com.bartek.restapi.service;
-
 import com.bartek.restapi.model.Car;
-import com.bartek.restapi.model.Color;
 
 import java.util.List;
 import java.util.Optional;

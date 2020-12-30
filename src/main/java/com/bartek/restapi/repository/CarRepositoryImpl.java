@@ -3,7 +3,6 @@ package com.bartek.restapi.repository;
 import com.bartek.restapi.model.Car;
 import com.bartek.restapi.model.Color;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.ApplicationEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Repository;
 
