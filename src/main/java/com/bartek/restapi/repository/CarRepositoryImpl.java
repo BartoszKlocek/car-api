@@ -2,6 +2,9 @@ package com.bartek.restapi.repository;
 
 import com.bartek.restapi.model.Car;
 import com.bartek.restapi.model.Color;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
@@ -14,6 +17,10 @@ public class CarRepositoryImpl implements CarRepository {
 
     public CarRepositoryImpl() {
         cars = new ArrayList<>();
+    }
+
+    @EventListener(ApplicationReadyEvent.class)
+    public void initData(){
         Car car1 = new Car(1L, "Kia", "Sportage", Color.WHITE);
         Car car2 = new Car(2L, "Hyundai", "SantaFe", Color.WHITE);
         Car car3 = new Car(3L, "Ford", "Fiesta", Color.BLUE);
