@@ -40,4 +40,38 @@ public class CarRepositoryImpl implements CarRepository {
                 .filter(a -> Objects.equals(a.getColor(), Color.valueOf(color.toUpperCase())))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public boolean save(Car car) {
+        Optional<Car> first = cars.stream().filter(a -> a.getId() == car.getId()).findFirst();
+        if (first.isEmpty()) {
+            car.setId(cars.get(cars.size() - 1).getId() + 1);
+            cars.add(car);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean update(long id, Car car) {
+        Optional<Car> first = cars.stream().filter(a -> a.getId() == car.getId()).findFirst();
+        if (first.isPresent()) {
+            car.setId(first.get().getId());
+            cars.remove(first.get());
+            cars.add(car);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean delete(long id) {
+        Optional<Car> first = cars.stream().filter(a -> a.getId() == id).findFirst();
+        if (first.isPresent()) {
+            cars.remove(first.get());
+            return true;
+        }
+        return false;
+    }
+
 }

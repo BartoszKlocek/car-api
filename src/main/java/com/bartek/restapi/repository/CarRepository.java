@@ -12,4 +12,9 @@ public interface CarRepository {
 
     List<Car> findByColor(String color);
 
+    boolean save(Car car);
+
+    boolean update(long id, Car car);
+
+    boolean delete(long id);
 }

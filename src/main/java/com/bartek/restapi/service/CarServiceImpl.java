@@ -34,4 +34,20 @@ public class CarServiceImpl implements CarService {
     public List<Car> findCarByColor(String color) {
         return repository.findByColor(color);
     }
+
+    @Override
+    public boolean addCar(Car car) {
+        return repository.save(car);
+    }
+
+    @Override
+    public boolean editCar(long id, Car car) {
+        return repository.update(id, car);
+    }
+
+    @Override
+    public boolean removeCar(long id) {
+        return repository.delete(id);
+    }
+
 }
